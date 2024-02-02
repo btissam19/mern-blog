@@ -8,6 +8,7 @@ import Projects from './pages/Projects'
 import SingIn from './pages/SingIn'
 import SingUp from './pages/SingUp'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -19,9 +20,10 @@ function App() {
     <Route path='/about' element={<About/>}/>
     <Route path='/projects' element={<Projects/>}/>
     <Route path='/dashboard' element={<Dashboard/>}/>
-    <Route path='/singup' element={<SingUp/>}/>
+    <Route path='/sign-in' element={<SingUp/>}/>
     <Route path='/singin' element={ <SingIn/>}/>
    </Routes>
+   <Footer/>
    </BrowserRouter>
    
    

@@ -1,6 +1,7 @@
 import User from "../models/User.model.js";
 import errorHandler from "../utils/errorHandler.js"
-import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken';
+import bcryptjs from 'bcryptjs'
 export const singUp=async(req,res,next)=>{
      const user={username:req.body.username,email:req.body.email,password:req.body.password}
      if(!user.username||!user.password ||!user.email || user.username===""||user.email===""||user.password===""){
@@ -10,7 +11,7 @@ export const singUp=async(req,res,next)=>{
         const newuser =new User({
             username:user.username,
             email:user.email,
-            password:bcrypt.hashSync(user.password , 10)
+            password:bcryptjs.hashSync(user.password , 10)
         })
          try {
             await newuser.save()
@@ -20,6 +21,37 @@ export const singUp=async(req,res,next)=>{
             res.status(500).json({ message: error.message });
             next(error)
          }
+    }
+}
+
+export const signin = async (req, res, next) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password || email === '' || password === '') {
+      next(errorHandler(400, 'All fields are required'));
+    }
+  
+    try {
+      const validUser = await User.findOne({ email });
+      if (!validUser) {
+        return next(errorHandler(404, 'Invalid information'));
+      }
+      const validPassword = bcryptjs.compareSync(password, validUser.password);
+      if (!validPassword) {
+        return next(errorHandler(400, 'Invalid information'));
+      }
+      const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+  
+      const { password: pass, ...rest } = validUser._doc;
+  
+      res
+        .status(200)
+        .cookie('access_token', token, {
+          httpOnly: true,
+        })
+        .json(rest);
+    } catch (error) {
+      next(error);
     }
 }
 
