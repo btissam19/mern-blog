@@ -1,4 +1,3 @@
-
 import {  Button, Navbar, TextInput } from 'flowbite-react';
 import { Link, useLocation} from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -41,7 +40,6 @@ const path = useLocation().pathname;
             </Button>
      </Link>
     <Navbar.Toggle />
-
     </div>
     <Navbar.Collapse>
         <Navbar.Link active={path === '/'} as={'div'}>
