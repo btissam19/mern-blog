@@ -1,4 +1,3 @@
-
 import './App.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import About from './pages/About'
@@ -9,6 +8,7 @@ import SingIn from './pages/SingIn'
 import SingUp from './pages/SingUp'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import PrivateRoute from './components/PriviteRoute'
 
 function App() {
 
@@ -19,7 +19,9 @@ function App() {
     <Route path='/' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
     <Route path='/projects' element={<Projects/>}/>
+    <Route element={<PrivateRoute/>}>
     <Route path='/dashboard' element={<Dashboard/>}/>
+    </Route>
     <Route path='/sign-up' element={<SingUp/>}/>
     <Route path='/sign-in' element={ <SingIn/>}/>
    </Routes>
