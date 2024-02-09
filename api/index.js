@@ -6,6 +6,7 @@ import userRoute from "./routes/user.route.js"
 import error from "./middlewares/error.js"
 import cookieParser from 'cookie-parser';
 import postRoutes from './routes/post.route.js';
+import commentRoutes from './routes/comment.route.js';
 
 mongoose.connect(process.env.MONGO)
 .then(()=>console.log("connected"))
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use('/api/user',userRoute);
 app.use('/api/post', postRoutes);
+app.use('/api/comment', commentRoutes);
 app.use(error);
 
 app.listen(3000,()=>console.log("app listen in port 3000"))
