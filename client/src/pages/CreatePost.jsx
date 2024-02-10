@@ -100,10 +100,10 @@ export default function CreatePost() {
               setFormData({ ...formData, category: e.target.value })
             }>
                 <option value='uncategorized'>Select a category</option>
-                <option value='javascript'>Software engineering</option>
-                <option value='reactjs'>DATA engineering</option>
-                <option value='nextjs'>AI</option>
-                <option value='nextjs'>ML</option>
+                <option value='Software engineering'>Software engineering</option>
+                <option value='DATA engineering'>DATA engineering</option>
+                <option value='AI'>AI</option>
+                <option value='ML'>ML</option>
               </Select>
             </div>
             <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>

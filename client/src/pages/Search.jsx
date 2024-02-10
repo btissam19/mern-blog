@@ -105,7 +105,7 @@ export default function Search() {
       <div className='p-7 border-b md:border-r md:min-h-screen border-gray-500'>
         <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
           <div className='flex   items-center gap-2'>
-            <label className='whitespace-nowrap font-semibold'>
+            {/* <label className='whitespace-nowrap font-semibold'>
               Search Term:
             </label>
             <TextInput
@@ -114,7 +114,7 @@ export default function Search() {
               type='text'
               value={sidebarData.searchTerm}
               onChange={handleChange}
-            />
+            /> */}
           </div>
           <div className='flex items-center gap-2'>
             <label className='font-semibold'>Sort:</label>
@@ -130,11 +130,11 @@ export default function Search() {
               value={sidebarData.category}
               id='category'
             >
-              <option value='uncategorized'>Uncategorized</option>
-              <option value='javascript'>Software engineering</option>
-              <option value='reactjs'>DATA engineering</option>
-              <option value='nextjs'>AI</option>
-              <option value='nextjs'>ML</option>
+                <option value='uncategorized'>Select a category</option>
+                <option value='Software engineering'>Software engineering</option>
+                <option value='DATA engineering'>DATA engineering</option>
+                <option value='AI'>AI</option>
+                <option value='ML'>ML</option>
             </Select>
           </div>
           <Button type='submit' outline gradientDuoTone='purpleToPink'>
